@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Epoch Converter</h2>
+    <button onClick="displayDate()">Use Current Time</button><br /><br />
+    <form id="frm1" action="/action_page.php">
+      Time in MS: <input type="text" name="date" />
+      <input type="button" onclick="displayDate()" value="Submit" />
+    </form>
+
+    <p id="currentDate"></p>
+    <p id="currentQtrHr"></p>
+    <p id="currentHour"></p>
+    <p id="currentDay"></p>
+    <p id="currentMins"></p>
+    <p id="currentYear"></p>
+    <p id="test"></p>
+
+    <script>
+      displayDate();
+      function displayDate() {
+        var actionDate = document.getElementById("frm1");
+        var date = actionDate.elements[0].value;
+        if (typeof date === "undefined" || date === null || date === "") {
+          date = Date.now();
+        }
+        var days = Math.round(date / 86400000);
+        var hours = Math.round(date / 3600000);
+        var minutes = Math.round(date / 60000);
+        var quarters = Math.round(date / 900000);
+        document.getElementById("currentDate").innerHTML =
+          "Current Date in Epoch Time ===" + date;
+        document.getElementById("currentQtrHr").innerHTML =
+          "Current Quarter Hr ===" + quarters;
+        document.getElementById("currentHour").innerHTML =
+          "Current  Hour ===" + hours;
+        document.getElementById("currentMins").innerHTML =
+          "Current Min===" + minutes;
+        document.getElementById("currentDay").innerHTML =
+          "Current Day===" + days;
+      }
+    </script>
+  </body>
+</html>
